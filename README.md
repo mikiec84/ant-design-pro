@@ -64,12 +64,13 @@ We need your help: https://github.com/ant-design/ant-design-pro/issues/120
 ```
 
 ## Usage
-
+node -v(8.11.1)  
+yarn -v(1.5.1)  
 ```bash
 $ git clone https://github.com/ant-design/ant-design-pro.git --depth=1
 $ cd ant-design-pro
-$ npm install
-$ npm start         # visit http://localhost:8000
+$ yarn install(or npm)  
+$ yarn start         # visit http://localhost:8000
 ```
 
 Or you can use the command tool: [ant-design-pro-cli](https://github.com/ant-design/ant-design-pro-cli)
