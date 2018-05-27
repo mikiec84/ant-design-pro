@@ -95,9 +95,6 @@ export const getRouterData = app => {
     '/market/industry': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Industry')),
     },
-    '/market/equity': {
-      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Equity')),
-    },
     '/market/sw': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Sw')),
     },
