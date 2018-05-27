@@ -42,7 +42,7 @@ export default class Industry extends Component {
           style={{ marginTop: 32 }}
         >
           <div style={{ padding: '0 24px' }}>
-            <FinanceChart chartType="industry" code="00" />
+            <FinanceChart chartType="sw" code="801150" />
           </div>
         </Card>
       </Fragment>

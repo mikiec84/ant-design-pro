@@ -9,7 +9,7 @@ import styles from './Industry.less';
   chart,
   loading: loading.effects['chart/fetch'],
 }))
-export default class Industry extends Component {
+export default class Sh extends Component {
   state = {
     salesType: 'all',
     currentTabKey: '',
@@ -42,7 +42,7 @@ export default class Industry extends Component {
           style={{ marginTop: 32 }}
         >
           <div style={{ padding: '0 24px' }}>
-            <FinanceChart chartType="industry" code="00" />
+            <FinanceChart chartType="sh" />
           </div>
         </Card>
       </Fragment>

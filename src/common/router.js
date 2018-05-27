@@ -89,8 +89,20 @@ export const getRouterData = app => {
     '/dashboard/test': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Dashboard/Monitor')),
     },
+    '/market/index': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Index')),
+    },
     '/market/industry': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Industry')),
+    },
+    '/market/equity': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Equity')),
+    },
+    '/market/sw': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Sw')),
+    },
+    '/market/sh': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Sh')),
     },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
