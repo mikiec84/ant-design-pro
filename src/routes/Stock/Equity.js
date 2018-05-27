@@ -3,13 +3,13 @@ import { connect } from 'dva';
 import { Card } from 'antd';
 import FinanceChart from 'components/Charts/Finance/FinanceChart';
 import { getTimeDistance } from '../../utils/utils';
-import styles from './Industry.less';
+import styles from './Stock.less';
 
 @connect(({ chart, loading }) => ({
   chart,
   loading: loading.effects['chart/fetch'],
 }))
-export default class Industry extends Component {
+export default class Equity extends Component {
   state = {
     salesType: 'all',
     currentTabKey: '',

@@ -28,7 +28,7 @@ const menuData = [
   },
   {
     name: 'market',
-    icon: 'markets',
+    icon: 'bank',
     path: 'market',
     children: [
       {
@@ -48,6 +48,21 @@ const menuData = [
       {
         name: '上海',
         path: 'sh',
+      },
+    ],
+  },
+  {
+    name: 'stock',
+    icon: 'bank',
+    path: 'stock',
+    children: [
+      {
+        name: '个股',
+        path: 'equity',
+      },
+      {
+        name: '组合',
+        path: 'portfolio',
       },
     ],
   },

@@ -104,6 +104,9 @@ export const getRouterData = app => {
     '/market/sh': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Sh')),
     },
+    '/stock/equity': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Stock/Equity')),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },
