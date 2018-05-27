@@ -20,6 +20,35 @@ const menuData = [
         // hideInBreadcrumb: true,
         // hideInMenu: true,
       },
+      {
+        name: '测试页',
+        path: 'test',
+      },
+    ],
+  },
+  {
+    name: 'market',
+    icon: 'markets',
+    path: 'market',
+    children: [
+      {
+        name: '指数',
+        path: 'index',
+      },
+      {
+        name: '行业',
+        path: 'industry',
+      },
+      {
+        name: '申万',
+        path: 'sw',
+        // hideInBreadcrumb: true,
+        // hideInMenu: true,
+      },
+      {
+        name: '上海',
+        path: 'sh',
+      },
     ],
   },
   {
@@ -114,6 +143,7 @@ const menuData = [
     name: '异常页',
     icon: 'warning',
     path: 'exception',
+    hideInMenu: true,
     children: [
       {
         name: '403',
