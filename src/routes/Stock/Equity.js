@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'dva';
 import { Card } from 'antd';
 import FinanceChart from 'components/Charts/Finance/FinanceChart';
-import { getTimeDistance } from '../../utils/utils';
 import styles from './Stock.less';
 
 @connect(({ chart, loading }) => ({
@@ -10,11 +9,6 @@ import styles from './Stock.less';
   loading: loading.effects['chart/fetch'],
 }))
 export default class Equity extends Component {
-  state = {
-    salesType: 'all',
-    currentTabKey: '',
-    rangePickerValue: getTimeDistance('year'),
-  };
 
   componentDidMount() {
     this.props.dispatch({
@@ -30,7 +24,7 @@ export default class Equity extends Component {
   }
 
   render() {
-    const { chart, loading } = this.props;
+    const { loading } = this.props;
 
     return (
       <Fragment>
