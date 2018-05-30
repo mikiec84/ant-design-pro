@@ -4,10 +4,6 @@ import moment from 'moment';
 import {
   Card,
   Form,
-  Icon,
-  Button,
-  Dropdown,
-  Menu,
   message,
   Badge,
   Divider,
@@ -38,7 +34,7 @@ export default class Portfolio extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'portfolio/fetch',
+      type: 'rule/fetch',
     });
   }
 
@@ -142,73 +138,30 @@ export default class Portfolio extends PureComponent {
 
     const columns = [
       {
-        title: '规则编号',
-        dataIndex: 'no',
+        title: '代码',
+        dataIndex: 'code',
       },
       {
-        title: '描述',
-        dataIndex: 'description',
+        title: '数量',
+        dataIndex: 'amount',
       },
       {
-        title: '服务调用次数',
-        dataIndex: 'callNo',
-        sorter: true,
-        align: 'right',
-        render: val => `${val} 万`,
-        // mark to display a total number
-        needTotal: true,
+        title: '实时',
+        dataIndex: 'current',
       },
       {
-        title: '状态',
-        dataIndex: 'status',
-        filters: [
-          {
-            text: status[0],
-            value: 0,
-          },
-          {
-            text: status[1],
-            value: 1,
-          },
-          {
-            text: status[2],
-            value: 2,
-          },
-          {
-            text: status[3],
-            value: 3,
-          },
-        ],
-        onFilter: (value, record) => record.status.toString() === value,
-        render(val) {
-          return <Badge status={statusMap[val]} text={status[val]} />;
-        },
+        title: '市值',
+        dataIndex: 'market',
       },
       {
-        title: '更新时间',
-        dataIndex: 'updatedAt',
-        sorter: true,
-        render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
+        title: '比例(%)',
+        dataIndex: 'ratio',
       },
       {
-        title: '操作',
-        render: () => (
-          <Fragment>
-            <a href="">配置</a>
-            <Divider type="vertical" />
-            <a href="">订阅警报</a>
-          </Fragment>
-        ),
+        title: '涨跌(%)',
+        dataIndex: 'percentage',
       },
     ];
-
-    const menu = (
-      <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
-        <Menu.Item key="remove">删除</Menu.Item>
-        <Menu.Item key="approval">批量审批</Menu.Item>
-      </Menu>
-    );
-
 
     return (
       <PageHeaderLayout title="查询表格">

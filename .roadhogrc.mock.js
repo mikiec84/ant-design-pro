@@ -137,4 +137,9 @@ const proxy = {
   },
 };
 
-export default (noProxy ? {} : delay(proxy, 1000));
+// export default (noProxy ? {} : delay(proxy, 1000));
+
+// proxy to real backend API
+export default {
+  'GET /api/(.*)': 'http://localhost:8000/api/',
+};
