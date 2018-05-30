@@ -1,12 +1,18 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent} from 'react';
 import { connect } from 'dva';
-import moment from 'moment';
 import {
+  List,
   Card,
-  Form,
-  message,
-  Badge,
-  Divider,
+  Row,
+  Col,
+  Radio,
+  Input,
+  Progress,
+  Button,
+  Icon,
+  Dropdown,
+  Menu,
+  Avatar,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
@@ -17,14 +23,12 @@ const getValue = obj =>
   Object.keys(obj)
     .map(key => obj[key])
     .join(',');
-const statusMap = ['default', 'processing', 'success', 'error'];
-const status = ['关闭', '运行中', '已上线', '异常'];
 
 @connect(({ rule, loading }) => ({
   rule,
   loading: loading.models.rule,
 }))
-@Form.create()
+
 export default class Portfolio extends PureComponent {
   state = {
     selectedRows: [],
@@ -63,7 +67,6 @@ export default class Portfolio extends PureComponent {
       payload: params,
     });
   };
-
 
   handleMenuClick = e => {
     const { dispatch } = this.props;
@@ -120,19 +123,15 @@ export default class Portfolio extends PureComponent {
     });
   };
 
-  handleAdd = fields => {
-    this.props.dispatch({
-      type: 'rule/add',
-      payload: {
-        description: fields.desc,
-      },
-    });
-
-    message.success('添加成功');
-  };
-
 
   render() {
+    const Info = ({ title, value, bordered }) => (
+      <div className={styles.headerInfo}>
+        <span>{title}</span>
+        <p>{value}</p>
+        {bordered && <em />}
+      </div>
+    );
     const { rule: { data }, loading } = this.props;
     const { selectedRows} = this.state;
 
@@ -164,7 +163,21 @@ export default class Portfolio extends PureComponent {
     ];
 
     return (
-      <PageHeaderLayout title="查询表格">
+      <PageHeaderLayout title="组合">
+        <Card bordered={false}>
+          <Row>
+            <Col sm={8} xs={24}>
+              <Info title="我的待办" value="8个任务" bordered />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="本周任务平均处理时间" value="32分钟" bordered />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="本周完成任务数" value="24个任务" />
+            </Col>
+          </Row>
+        </Card>
+
         <Card bordered={false}>
           <div className={styles.tableList}>
             <StandardTable
