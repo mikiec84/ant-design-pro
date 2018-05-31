@@ -1,18 +1,9 @@
 import React, { PureComponent} from 'react';
 import { connect } from 'dva';
 import {
-  List,
   Card,
   Row,
   Col,
-  Radio,
-  Input,
-  Progress,
-  Button,
-  Icon,
-  Dropdown,
-  Menu,
-  Avatar,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
@@ -125,6 +116,8 @@ export default class Portfolio extends PureComponent {
 
 
   render() {
+    console.log(this.props.rule.data.list);
+    console.log(this.props.rule.data.market_value);
     const Info = ({ title, value, bordered }) => (
       <div className={styles.headerInfo}>
         <span>{title}</span>
@@ -134,7 +127,6 @@ export default class Portfolio extends PureComponent {
     );
     const { rule: { data }, loading } = this.props;
     const { selectedRows} = this.state;
-
     const columns = [
       {
         title: '代码',
@@ -160,6 +152,10 @@ export default class Portfolio extends PureComponent {
         title: '涨跌(%)',
         dataIndex: 'percentage',
       },
+      {
+        title: '变动',
+        dataIndex: 'change',
+      },
     ];
 
     return (
@@ -167,13 +163,37 @@ export default class Portfolio extends PureComponent {
         <Card bordered={false}>
           <Row>
             <Col sm={8} xs={24}>
-              <Info title="我的待办" value="8个任务" bordered />
+              <Info title="总资产" value={this.props.rule.data.total} bordered />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="本周任务平均处理时间" value="32分钟" bordered />
+              <Info title="市值" value={this.props.rule.data.market_value} bordered />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="本周完成任务数" value="24个任务" />
+              <Info title="净资产" value={this.props.rule.data.net_asset} bordered />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="融资" value={this.props.rule.data.financing} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="杠杆" value={this.props.rule.data.lever} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="仓位" value={this.props.rule.data.position_ratio} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="成本" value={this.props.rule.data.cost} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="盈利" value={this.props.rule.data.profit} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="盈利(%)" value={this.props.rule.data.profit_ratio} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="当日盈利" value={this.props.rule.data.profit_today} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="当日盈利(%)" value={this.props.rule.data.profit_ratio_today} />
             </Col>
           </Row>
         </Card>
