@@ -49,6 +49,10 @@ const menuData = [
         name: '上海',
         path: 'sh',
       },
+      {
+        name: 'NHNL',
+        path: 'nhnl',
+      },
     ],
   },
   {

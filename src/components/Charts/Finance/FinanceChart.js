@@ -41,6 +41,8 @@ class FinanceChart extends Component {
       url = `http://localhost:8000/api/sw?code=${this.state.code}`;
     } else if (chartType === 'sh') {
       url = 'http://localhost:8000/api/sh';
+    } else if (chartType === 'nhnl') {
+      url = 'http://localhost:8000/api/market';
     }
     return url;
   }
@@ -57,6 +59,8 @@ class FinanceChart extends Component {
       url = 'http://localhost:8000/api/swlist';
     } else if (this.props.chartType === 'sh') {
       url = 'http://localhost:8000/api/sh';
+    } else if (this.props.chartType === 'nhnl') {
+      url = 'http://localhost:8000/api/market';
     }
     return url;
   }
@@ -122,7 +126,7 @@ class FinanceChart extends Component {
           console.log(chart.yAxis[0].getExtremes().dataMax);
           console.log(chart.yAxis[0].getExtremes().dataMin);
         })
-        .catch(error => {});
+        .catch(error => {console.log(error)});
     }
   }
 
