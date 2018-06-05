@@ -169,7 +169,7 @@ export default class Portfolio extends PureComponent {
               <Info title="市值" value={this.props.rule.data.market_value} bordered />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="仓位" value={this.props.rule.data.position_ratio} />
+              <Info title="仓位(%)" value={this.props.rule.data.position_ratio} />
             </Col>
             <Col sm={8} xs={24}>
               <Info title="净资产" value={this.props.rule.data.net_asset} bordered />
@@ -187,7 +187,7 @@ export default class Portfolio extends PureComponent {
               <Info title="融资" value={this.props.rule.data.financing} />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="杠杆" value={this.props.rule.data.lever} />
+              <Info title="杠杆(%)" value={this.props.rule.data.lever} />
             </Col>
             <Col sm={8} xs={24}>
               <Info title="当日盈利" value={this.props.rule.data.profit_today} />
