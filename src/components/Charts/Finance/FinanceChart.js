@@ -84,11 +84,13 @@ class FinanceChart extends Component {
           chart.series[0].setData(data.PB);
           chart.series[1].setData(data.PE);
           chart.series[2].setData(data.PE_TTM);
+          chart.series[3].setData(data.turnover);
 
           // dynamic update plotLines
           chart.yAxis[0].removePlotLine('plotLinePB');
           const averagePB = data.PB_avg;
           const averagePE = data.PE_avg;
+          const averageTurnover = data.turnover_avg;
           const plotLinePB = {
             id: 'plotLinePB',
             color: 'blue',
@@ -181,8 +183,10 @@ class FinanceChart extends Component {
       })
       .then(data => {
         console.log(data);
+        console.log(data.turnover);
         const averagePB = data.PB_avg;
         const averagePE = data.PE_avg;
+        const averageTurnover = data.turnover_avg;
         const options2 = {
           chart: {
             zoomType: 'x',
@@ -247,7 +251,7 @@ class FinanceChart extends Component {
             },
             {
               title: {
-                text: 'DYR',
+                text: 'Turnover',
               },
               plotLines: [
                 {
@@ -258,7 +262,7 @@ class FinanceChart extends Component {
                   value: averagePE,
                   zIndex: 5,
                   label: {
-                    text: `PE:${averagePE}`,
+                    text: `Turnover:${averageTurnover}`,
                     align: 'right',
                     style: {
                       color: 'black',
@@ -336,15 +340,15 @@ class FinanceChart extends Component {
             },
             {
               type: 'line',
-              name: 'DYR',
+              name: 'Turnover',
               yAxis: 2,
-              data: data.DYR,
+              data: data.turnover,
               visible: false,
             },
           ],
         };
         that.setState({ options: options2 });
-        console.log(that.state.options);
+        console.log("options:"+that.state.options);
         // create highcharts chart
         that.chart = new Highcharts[that.props.type || 'Chart'](that.chartEl, that.state.options);
       })
