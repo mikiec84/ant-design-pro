@@ -53,6 +53,14 @@ const menuData = [
         name: 'NHNL',
         path: 'nhnl',
       },
+      {
+        name: '破净率',
+        path: 'broken',
+      },
+      {
+        name: '涨跌停比率',
+        path: 'zdr',
+      },
     ],
   },
   {

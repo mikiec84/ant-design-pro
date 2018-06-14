@@ -190,13 +190,13 @@ export default class Portfolio extends PureComponent {
               <Info title="当日盈利(%)" value={this.props.rule.data.profit_ratio_today} />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="招商成本" value={this.props.rule.data.cost_zs} />
+              <Info title="招商成本(当年)" value={this.props.rule.data.cost_zs} />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="华泰1成本" value={this.props.rule.data.cost_ht1} />
+              <Info title="华泰1成本(当年)" value={this.props.rule.data.cost_ht1} />
             </Col>
             <Col sm={8} xs={24}>
-              <Info title="华泰2成本" value={this.props.rule.data.cost_ht2} />
+              <Info title="华泰2成本(当年)" value={this.props.rule.data.cost_ht2} />
             </Col>
             <Col sm={8} xs={24}>
               <Info title="融资" value={this.props.rule.data.financing} />

@@ -104,6 +104,12 @@ export const getRouterData = app => {
     '/market/nhnl': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Nhnl')),
     },
+    '/market/broken': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/BrokenNet')),
+    },
+    '/market/zdr': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Zdr')),
+    },
     '/stock/equity': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Stock/Equity')),
     },
