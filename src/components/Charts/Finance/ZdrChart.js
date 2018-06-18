@@ -108,13 +108,13 @@ class ZdrChart extends Component {
               type: 'line',
               name: '涨停',
               data: data.zt,
-              color: 'blue',
+              color: 'red',
             },
             {
               type: 'line',
               name: '跌停',
               data: data.dt,
-              color: 'black',
+              color: 'green',
             },
             {
               type: 'line',
@@ -135,6 +135,7 @@ class ZdrChart extends Component {
               name: 'ZDR(%)',
               yAxis: 1,
               data: data.zdr,
+              color: 'blue',
             },
           ],
         };

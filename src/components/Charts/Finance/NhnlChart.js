@@ -116,14 +116,14 @@ class NhnlChart extends Component {
               type: 'line',
               name: 'NH',
               data: data.nh,
-              color: 'blue',
+              color: 'red',
             },
             {
               type: 'line',
               name: 'NL',
               yAxis: 1,
               data: data.nl,
-              color: 'black',
+              color: 'green',
             },
             {
               type: 'line',
@@ -131,6 +131,7 @@ class NhnlChart extends Component {
               yAxis: 1,
               data: data.nhnl,
               visible: true,
+              color: 'blue',
             },
             {
               type: 'line',
