@@ -116,6 +116,9 @@ export const getRouterData = app => {
     '/stock/portfolio': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Stock/Portfolio')),
     },
+    '/stock/portfolio-history': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Stock/PortfolioHistory')),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts';
 
-class NhnlChart extends Component {
+class PortfolioChart extends Component {
   componentDidMount() {
     console.log('componentDidMount***');
     // remember the outer "this"
     const that = this;
-    const url = 'http://localhost:8000/api/market';
+    const url = 'http://localhost:8000/api/portfolio_history';
     // only works for CH and FF
     // let url = new URL(this.props.url);
     // let params = new URLSearchParams(url.search.slice(1));
@@ -27,7 +27,7 @@ class NhnlChart extends Component {
             zoomType: 'x',
           },
           title: {
-            text: `Finance chart over time NHNL`,
+            text: `Finance chart over time Portfolio`,
           },
           subtitle: {
             text:
@@ -41,28 +41,46 @@ class NhnlChart extends Component {
           yAxis: [
             {
               title: {
-                text: 'NH',
+                text: 'Total',
               },
             },
             {
               title: {
-                text: 'NL',
+                text: 'Market',
               },
             },
             {
               title: {
-                text: 'NHNL',
+                text: 'Net Asset',
               },
             },
             {
               title: {
-                text: 'NH Ratio(%)',
+                text: 'Financing',
               },
               opposite: true, // right-side y-axis
             },
             {
               title: {
-                text: 'NL Ratio(%)',
+                text: 'Position Ratio(%)',
+              },
+              opposite: true, // right-side y-axis
+            },
+            {
+              title: {
+                text: 'Lever(%)',
+              },
+              opposite: true, // right-side y-axis
+            },
+            {
+              title: {
+                text: 'Profit',
+              },
+              opposite: true, // right-side y-axis
+            },
+            {
+              title: {
+                text: 'Profit Ratio(%)',
               },
               opposite: true, // right-side y-axis
             },
@@ -114,37 +132,60 @@ class NhnlChart extends Component {
           series: [
             {
               type: 'line',
-              name: 'NH',
-              data: data.nh,
+              name: 'Total',
+              data: data.total,
               color: 'blue',
+              visible: false,
             },
             {
               type: 'line',
-              name: 'NL',
+              name: 'Market',
               yAxis: 1,
-              data: data.nl,
+              data: data.market,
               color: 'black',
+              visible: false,
             },
             {
               type: 'line',
-              name: 'NHNL',
+              name: 'Net Asset',
               yAxis: 1,
-              data: data.nhnl,
+              data: data.net_asset,
               visible: true,
             },
             {
               type: 'line',
-              name: 'NH Ratio(%)',
+              name: 'Financing',
               yAxis: 1,
-              data: data.nh_ratio,
+              data: data.financing,
               visible: false,
             },
             {
               type: 'line',
-              name: 'NL Ratio(%)',
+              name: 'Position Ratio(%)',
               yAxis: 1,
-              data: data.nl_ratio,
+              data: data.position_ratio,
               visible: false,
+            },
+            {
+              type: 'line',
+              name: 'Lever(%)',
+              yAxis: 1,
+              data: data.lever,
+              visible: true,
+            },
+            {
+              type: 'line',
+              name: 'Profit',
+              yAxis: 1,
+              data: data.profit,
+              visible: true,
+            },
+            {
+              type: 'line',
+              name: 'Profit Ratio(%)',
+              yAxis: 1,
+              data: data.profit_ratio,
+              visible: true,
             },
           ],
         };
@@ -176,4 +217,4 @@ class NhnlChart extends Component {
   }
 }
 
-export default NhnlChart;
+export default PortfolioChart;

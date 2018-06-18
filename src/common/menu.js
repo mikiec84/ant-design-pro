@@ -76,6 +76,10 @@ const menuData = [
         name: '组合',
         path: 'portfolio',
       },
+      {
+        name: '组合历史',
+        path: 'portfolio-history',
+      },
     ],
   },
   {
