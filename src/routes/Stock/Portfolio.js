@@ -169,6 +169,9 @@ export default class Portfolio extends PureComponent {
               <Info title="市值" value={this.props.rule.data.market_value} bordered />
             </Col>
             <Col sm={8} xs={24}>
+              <Info title="现金" value={this.props.rule.data.cash} bordered />
+            </Col>
+            <Col sm={8} xs={24}>
               <Info title="仓位(%)" value={this.props.rule.data.position_ratio} />
             </Col>
             <Col sm={8} xs={24}>
