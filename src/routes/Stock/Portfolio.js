@@ -33,13 +33,18 @@ const CreateForm = Form.create()(props => {
   };
   return (
     <Modal
-      title="新建规则"
+      title="新增个股"
       visible={modalVisible}
       onOk={okHandle}
       onCancel={() => handleModalVisible()}
     >
-      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="描述">
-        {form.getFieldDecorator('desc', {
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="个股">
+        {form.getFieldDecorator('code', {
+          rules: [{ required: true, message: 'Please input some description...' }],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="数量">
+        {form.getFieldDecorator('amount', {
           rules: [{ required: true, message: 'Please input some description...' }],
         })(<Input placeholder="请输入" />)}
       </FormItem>
