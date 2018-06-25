@@ -4,16 +4,48 @@ import {
   Card,
   Row,
   Col,
+  Button,
+  Form,
+  Modal,
+  Input,
+  message,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 import styles from './Portfolio.less';
+// import { message } from 'antd/lib/index';
 
+const FormItem = Form.Item;
 const getValue = obj =>
   Object.keys(obj)
     .map(key => obj[key])
     .join(',');
+
+const CreateForm = Form.create()(props => {
+  const { modalVisible, form, handleAdd, handleModalVisible } = props;
+  const okHandle = () => {
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      form.resetFields();
+      handleAdd(fieldsValue);
+    });
+  };
+  return (
+    <Modal
+      title="新建规则"
+      visible={modalVisible}
+      onOk={okHandle}
+      onCancel={() => handleModalVisible()}
+    >
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="描述">
+        {form.getFieldDecorator('desc', {
+          rules: [{ required: true, message: 'Please input some description...' }],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+    </Modal>
+  );
+});
 
 @connect(({ rule, loading }) => ({
   rule,
@@ -22,6 +54,7 @@ const getValue = obj =>
 
 export default class Portfolio extends PureComponent {
   state = {
+    modalVisible: false,
     selectedRows: [],
     formValues: {},
   };
@@ -114,6 +147,25 @@ export default class Portfolio extends PureComponent {
     });
   };
 
+  handleModalVisible = flag => {
+    this.setState({
+      modalVisible: !!flag,
+    });
+  };
+
+  handleAdd = fields => {
+    this.props.dispatch({
+      type: 'rule/add',
+      payload: {
+        description: fields.desc,
+      },
+    });
+
+    message.success('添加成功');
+    this.setState({
+      modalVisible: false,
+    });
+  };
 
   render() {
     console.log(this.props.rule.data.list);
@@ -126,7 +178,7 @@ export default class Portfolio extends PureComponent {
       </div>
     );
     const { rule: { data }, loading } = this.props;
-    const { selectedRows} = this.state;
+    const { selectedRows, modalVisible} = this.state;
     const columns = [
       {
         title: '代码',
@@ -157,6 +209,11 @@ export default class Portfolio extends PureComponent {
         dataIndex: 'change',
       },
     ];
+
+    const parentMethods = {
+      handleAdd: this.handleAdd,
+      handleModalVisible: this.handleModalVisible,
+    };
 
     return (
       <PageHeaderLayout title="组合">
@@ -212,6 +269,11 @@ export default class Portfolio extends PureComponent {
 
         <Card bordered={false}>
           <div className={styles.tableList}>
+            <div className={styles.tableListOperator}>
+              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
+                新建
+              </Button>
+            </div>
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
@@ -222,6 +284,7 @@ export default class Portfolio extends PureComponent {
             />
           </div>
         </Card>
+        <CreateForm {...parentMethods} modalVisible={modalVisible} />
       </PageHeaderLayout>
     );
   }
