@@ -13,6 +13,10 @@ export async function queryRule(params) {
   return request(`/api/portfolio?${stringify(params)}`);
 }
 
+export async function queryMagic(params) {
+  return request(`/api/magic?${stringify(params)}`);
+}
+
 export async function removeRule(params) {
   return request('/api/rule', {
     method: 'POST',

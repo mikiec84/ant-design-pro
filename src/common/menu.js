@@ -80,6 +80,10 @@ const menuData = [
         name: '组合历史',
         path: 'portfolio-history',
       },
+      {
+        name: '神奇公式',
+        path: 'magic',
+      },
     ],
   },
   {

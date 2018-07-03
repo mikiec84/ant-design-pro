@@ -173,6 +173,7 @@ export default class Portfolio extends PureComponent {
   };
 
   render() {
+    // console.log(this.props);
     console.log(this.props.rule.data.list);
     console.log(this.props.rule.data.market_value);
     const Info = ({ title, value, bordered }) => (
