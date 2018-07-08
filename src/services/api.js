@@ -17,6 +17,20 @@ export async function queryMagic(params) {
   return request(`/api/magic?${stringify(params)}`);
 }
 
+export async function queryDividend(params) {
+  return request(`/api/dividend?${stringify(params)}`);
+}
+
+export async function addDividend(params) {
+  return request('/api/dividend', {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
 export async function removeRule(params) {
   return request('/api/rule', {
     method: 'POST',

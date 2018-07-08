@@ -122,6 +122,9 @@ export const getRouterData = app => {
     '/stock/magic': {
       component: dynamicWrapper(app, ['magic'], () => import('../routes/Stock/Magic')),
     },
+    '/stock/dividend': {
+      component: dynamicWrapper(app, ['dividend'], () => import('../routes/Stock/Dividend')),
+    },
     '/form/basic-form': {
       component: dynamicWrapper(app, ['form'], () => import('../routes/Forms/BasicForm')),
     },

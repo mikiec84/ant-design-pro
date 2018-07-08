@@ -84,6 +84,10 @@ const menuData = [
         name: '神奇公式',
         path: 'magic',
       },
+      {
+        name: '分红',
+        path: 'dividend',
+      },
     ],
   },
   {
