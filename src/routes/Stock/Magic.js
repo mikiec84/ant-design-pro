@@ -2,7 +2,6 @@ import React, { PureComponent} from 'react';
 import { connect } from 'dva';
 import {
   Card,
-  Button,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
@@ -92,6 +91,7 @@ export default class Magic extends PureComponent {
 
 
   render() {
+    // #5
     const { magic: { data }, loading } = this.props;
     const { selectedRows} = this.state;
     const columns = [
@@ -126,11 +126,6 @@ export default class Magic extends PureComponent {
 
         <Card bordered={false}>
           <div className={styles.tableList}>
-            <div className={styles.tableListOperator}>
-              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
-              </Button>
-            </div>
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
