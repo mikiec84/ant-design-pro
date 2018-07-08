@@ -2,13 +2,7 @@ import React, { PureComponent} from 'react';
 import { connect } from 'dva';
 import {
   Card,
-  Row,
-  Col,
   Button,
-  Form,
-  Modal,
-  Input,
-  message,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
@@ -21,10 +15,10 @@ const getValue = obj =>
     .map(key => obj[key])
     .join(',');
 
-
-@connect(({ rule, loading }) => ({
-  rule,
-  loading: loading.models.rule,
+// #5 must define here to connect model data
+@connect(({ magic, loading }) => ({
+  magic,
+  loading: loading.models.magic,
 }))
 
 export default class Magic extends PureComponent {
@@ -98,8 +92,7 @@ export default class Magic extends PureComponent {
 
 
   render() {
-    console.log(this.props);
-    const { rule: { data }, loading } = this.props;
+    const { magic: { data }, loading } = this.props;
     const { selectedRows} = this.state;
     const columns = [
       {
@@ -107,28 +100,24 @@ export default class Magic extends PureComponent {
         dataIndex: 'code',
       },
       {
-        title: '数量',
-        dataIndex: 'amount',
+        title: 'PB',
+        dataIndex: 'pb',
       },
       {
-        title: '实时',
-        dataIndex: 'current',
+        title: 'PB Order',
+        dataIndex: 'pb_order',
       },
       {
-        title: '市值',
-        dataIndex: 'market',
+        title: 'PE',
+        dataIndex: 'pe',
       },
       {
-        title: '比例(%)',
-        dataIndex: 'ratio',
+        title: 'PE Order',
+        dataIndex: 'pe_order',
       },
       {
-        title: '涨跌(%)',
-        dataIndex: 'percentage',
-      },
-      {
-        title: '变动',
-        dataIndex: 'change',
+        title: 'Magic Order',
+        dataIndex: 'magic_order',
       },
     ];
 
