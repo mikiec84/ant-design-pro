@@ -6,6 +6,7 @@ import {
   Form,
   Modal,
   Input,
+  DatePicker,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
@@ -39,7 +40,7 @@ const CreateForm = Form.create()(props => {
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="日期">
         {form.getFieldDecorator('code', {
           rules: [{ required: true, message: 'Please input some description...' }],
-        })(<Input placeholder="请输入" />)}
+        })(<DatePicker />)}
       </FormItem>
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="分红金额">
         {form.getFieldDecorator('money', {
