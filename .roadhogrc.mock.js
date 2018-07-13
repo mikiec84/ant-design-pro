@@ -142,4 +142,5 @@ const proxy = {
 // proxy to real backend API
 export default {
   'GET /api/(.*)': 'http://localhost:8000/api/',
+  'POST /api/(.*)': 'http://localhost:8000/api/',
 };

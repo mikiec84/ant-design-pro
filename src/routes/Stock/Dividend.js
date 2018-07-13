@@ -26,6 +26,7 @@ const CreateForm = Form.create()(props => {
   const okHandle = () => {
     form.validateFields((err, fieldsValue) => {
       if (err) return;
+      console.log(fieldsValue);
       form.resetFields();
       handleAdd(fieldsValue);
     });
@@ -38,7 +39,7 @@ const CreateForm = Form.create()(props => {
       onCancel={() => handleModalVisible()}
     >
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="日期">
-        {form.getFieldDecorator('code', {
+        {form.getFieldDecorator('date', {
           rules: [{ required: true, message: 'Please input some description...' }],
         })(<DatePicker />)}
       </FormItem>
@@ -135,7 +136,8 @@ export default class Dividend extends PureComponent {
     this.props.dispatch({
       type: 'dividend/add',
       payload: {
-        description: fields.desc,
+        date: fields.date,
+        money: fields.money,
       },
     });
 
