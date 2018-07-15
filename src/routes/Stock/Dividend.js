@@ -26,7 +26,6 @@ const CreateForm = Form.create()(props => {
   const okHandle = () => {
     form.validateFields((err, fieldsValue) => {
       if (err) return;
-      console.log(fieldsValue);
       form.resetFields();
       handleAdd(fieldsValue);
     });
@@ -46,6 +45,11 @@ const CreateForm = Form.create()(props => {
       <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="分红金额">
         {form.getFieldDecorator('money', {
           rules: [{ required: true, message: 'Please input some description...' }],
+        })(<Input placeholder="请输入" />)}
+      </FormItem>
+      <FormItem labelCol={{ span: 5 }} wrapperCol={{ span: 15 }} label="备注">
+        {form.getFieldDecorator('description', {
+          rules: [{ required: false, message: 'Please input some description...' }],
         })(<Input placeholder="请输入" />)}
       </FormItem>
     </Modal>
@@ -138,6 +142,7 @@ export default class Dividend extends PureComponent {
       payload: {
         date: fields.date,
         money: fields.money,
+        description: fields.description,
       },
     });
 
@@ -148,8 +153,8 @@ export default class Dividend extends PureComponent {
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.props.dividend.data.list);
+    // console.log(this.props);
+    // console.log(this.props.dividend.data.list);
     // #5
     const { dividend: { data }, loading } = this.props;
     const { selectedRows, modalVisible} = this.state;
@@ -161,6 +166,10 @@ export default class Dividend extends PureComponent {
       {
         title: '金额',
         dataIndex: 'money',
+      },
+      {
+        title: '备注',
+        dataIndex: 'description',
       },
     ];
 
