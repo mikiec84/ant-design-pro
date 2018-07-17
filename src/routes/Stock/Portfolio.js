@@ -191,6 +191,10 @@ export default class Portfolio extends PureComponent {
         dataIndex: 'code',
       },
       {
+        title: '名称',
+        dataIndex: 'name',
+      },
+      {
         title: '数量',
         dataIndex: 'amount',
       },

@@ -100,6 +100,10 @@ export default class Magic extends PureComponent {
         dataIndex: 'code',
       },
       {
+        title: '名称',
+        dataIndex: 'name',
+      },
+      {
         title: 'PB',
         dataIndex: 'pb',
       },
