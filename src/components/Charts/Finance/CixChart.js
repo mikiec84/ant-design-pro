@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts';
 
-class PortfolioChart extends Component {
+class CixChart extends Component {
   componentDidMount() {
     console.log('componentDidMount***');
     // remember the outer "this"
     const that = this;
-    const url = 'http://localhost:8000/api/portfolio_history';
-    // only works for CH and FF
-    // let url = new URL(this.props.url);
-    // let params = new URLSearchParams(url.search.slice(1));
-    // console.log(params);
-    // //Iterate the search parameters.
-    //   for (let p of params) {
-    //     console.log(p);
-    //   }
-    //   let code = params.get('code');
+    const url = 'http://localhost:8000/api/market';
     fetch(url)
       .then(response => {
         return response.json();
@@ -27,7 +18,7 @@ class PortfolioChart extends Component {
             zoomType: 'x',
           },
           title: {
-            text: `Finance chart over time Portfolio`,
+            text: `Finance chart over time CIX`,
           },
           subtitle: {
             text:
@@ -41,51 +32,12 @@ class PortfolioChart extends Component {
           yAxis: [
             {
               title: {
-                text: 'Total',
+                text: 'CIX',
               },
             },
             {
               title: {
-                text: 'Market',
-              },
-            },
-            {
-              title: {
-                text: 'Net Asset',
-              },
-            },
-            {
-              title: {
-                text: 'Cost',
-              },
-            },
-            {
-              title: {
-                text: 'Financing',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'Position Ratio(%)',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'Lever(%)',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'Profit',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'Profit Ratio(%)',
+                text: 'Turnover(%)',
               },
               opposite: true, // right-side y-axis
             },
@@ -137,67 +89,17 @@ class PortfolioChart extends Component {
           series: [
             {
               type: 'line',
-              name: 'Total',
-              data: data.total,
+              name: 'CIX',
+              data: data.cix,
               color: 'blue',
-              visible: false,
             },
             {
               type: 'line',
-              name: 'Market',
+              name: 'Turnover',
               yAxis: 1,
-              data: data.market,
+              data: data.turnover,
               color: 'black',
               visible: false,
-            },
-            {
-              type: 'line',
-              name: 'Net Asset',
-              yAxis: 1,
-              data: data.net_asset,
-              visible: true,
-            },
-            {
-              type: 'line',
-              name: 'Cost',
-              yAxis: 1,
-              data: data.cost,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: 'Financing',
-              yAxis: 1,
-              data: data.financing,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: 'Position Ratio(%)',
-              yAxis: 1,
-              data: data.position_ratio,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: 'Lever(%)',
-              yAxis: 1,
-              data: data.lever,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: 'Profit',
-              yAxis: 1,
-              data: data.profit,
-              visible: true,
-            },
-            {
-              type: 'line',
-              name: 'Profit Ratio(%)',
-              yAxis: 1,
-              data: data.profit_ratio,
-              visible: true,
             },
           ],
         };
@@ -229,4 +131,4 @@ class PortfolioChart extends Component {
   }
 }
 
-export default PortfolioChart;
+export default CixChart;

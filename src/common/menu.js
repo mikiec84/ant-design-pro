@@ -61,6 +61,10 @@ const menuData = [
         name: '涨跌停比率',
         path: 'zdr',
       },
+      {
+        name: 'CIX',
+        path: 'cix',
+      },
     ],
   },
   {
