@@ -122,6 +122,7 @@ export default class Magic extends PureComponent {
       {
         title: 'Magic Order',
         dataIndex: 'magic_order',
+        sorter: true,
       },
     ];
 
