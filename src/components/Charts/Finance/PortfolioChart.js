@@ -63,7 +63,6 @@ class PortfolioChart extends Component {
               title: {
                 text: 'Financing',
               },
-              opposite: true, // right-side y-axis
             },
             {
               title: {
@@ -81,11 +80,21 @@ class PortfolioChart extends Component {
               title: {
                 text: 'Profit',
               },
-              opposite: true, // right-side y-axis
             },
             {
               title: {
                 text: 'Profit Ratio(%)',
+              },
+              opposite: true, // right-side y-axis
+            },
+            {
+              title: {
+                text: 'Profit Today',
+              },
+            },
+            {
+              title: {
+                text: 'Profit Ratio Today(%)',
               },
               opposite: true, // right-side y-axis
             },
@@ -174,14 +183,14 @@ class PortfolioChart extends Component {
             {
               type: 'line',
               name: 'Position Ratio(%)',
-              yAxis: 1,
+              yAxis: 2,
               data: data.position_ratio,
               visible: false,
             },
             {
               type: 'line',
               name: 'Lever(%)',
-              yAxis: 1,
+              yAxis: 2,
               data: data.lever,
               visible: false,
             },
@@ -195,9 +204,23 @@ class PortfolioChart extends Component {
             {
               type: 'line',
               name: 'Profit Ratio(%)',
-              yAxis: 1,
+              yAxis: 2,
               data: data.profit_ratio,
               visible: true,
+            },
+            {
+              type: 'line',
+              name: 'Profit Today',
+              yAxis: 1,
+              data: data.profit_today,
+              visible: false,
+            },
+            {
+              type: 'line',
+              name: 'Profit Ratio Today(%)',
+              yAxis: 2,
+              data: data.profit_ratio_today,
+              visible: false,
             },
           ],
         };
