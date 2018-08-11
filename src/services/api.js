@@ -31,9 +31,19 @@ export async function addDividend(params) {
   });
 }
 
+export async function removeDividend(params) {
+  return request('/api/dividend', {
+    method: 'POST',
+    body: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
 export async function removeRule(params) {
   return request('/api/rule', {
-    method: 'POST',
+    method: 'DELETE',
     body: {
       ...params,
       method: 'delete',

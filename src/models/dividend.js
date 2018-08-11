@@ -1,4 +1,4 @@
-import { queryDividend, addDividend } from '../services/api';
+import { queryDividend, addDividend, removeDividend } from '../services/api';
 
 export default {
   namespace: 'dividend',
@@ -20,6 +20,14 @@ export default {
     },
     *add({ payload, callback }, { call, put }) {
       const response = yield call(addDividend, payload);
+      yield put({
+        type: 'save',
+        payload: response,
+      });
+      if (callback) callback();
+    },
+    *remove({ payload, callback }, { call, put }) {
+      const response = yield call(removeDividend, payload);
       yield put({
         type: 'save',
         payload: response,

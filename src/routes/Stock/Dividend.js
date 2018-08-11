@@ -6,14 +6,16 @@ import {
   Form,
   Modal,
   Input,
+  Dropdown,
+  Menu,
+  Icon,
+  message,
   DatePicker,
 } from 'antd';
 import StandardTable from 'components/StandardTable';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
 
 import styles from './Portfolio.less';
-import { message } from 'antd/lib/index';
-// import { message } from 'antd/lib/index';
 
 const FormItem = Form.Item;
 const getValue = obj =>
@@ -63,6 +65,8 @@ const CreateForm = Form.create()(props => {
 
 export default class Dividend extends PureComponent {
   state = {
+    modalVisible: false,
+    expandForm: false,
     selectedRows: [],
     formValues: {},
   };
@@ -73,6 +77,7 @@ export default class Dividend extends PureComponent {
       type: 'dividend/fetch',
     });
   }
+
 
   handleStandardTableChange = (pagination, filtersArg, sorter) => {
     const { dispatch } = this.props;
@@ -98,6 +103,51 @@ export default class Dividend extends PureComponent {
       type: 'dividend/fetch',
       payload: params,
     });
+  };
+
+  handleFormReset = () => {
+    const { form, dispatch } = this.props;
+    form.resetFields();
+    this.setState({
+      formValues: {},
+    });
+    dispatch({
+      type: 'dividend/fetch',
+      payload: {},
+    });
+  };
+
+  toggleForm = () => {
+    this.setState({
+      expandForm: !this.state.expandForm,
+    });
+  };
+
+  handleMenuClick = e => {
+    const { dispatch } = this.props;
+    const { selectedRows } = this.state;
+    if (!selectedRows) return;
+    switch (e.key) {
+      case 'remove':
+        dispatch({
+          type: 'dividend/remove',
+          payload: {
+            id: selectedRows.map(row => row.id).join(','),
+          },
+          callback: () => {
+            dispatch({
+              type: 'dividend/fetch',
+              payload: {},
+            });
+            this.setState({
+              selectedRows: [],
+            });
+          },
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   handleSelectRows = rows => {
@@ -150,9 +200,20 @@ export default class Dividend extends PureComponent {
     this.setState({
       modalVisible: false,
     });
+    // TODO 刷新还是有点问题
+    this.props.dispatch({
+      type: 'dividend/fetch',
+      payload: {},
+    });
+
   };
 
+  renderForm() {
+    return this.state.expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
+  }
+
   render() {
+    console.log("render***");
     // console.log(this.props);
     // console.log(this.props.dividend.data.list);
     // #5
@@ -173,6 +234,13 @@ export default class Dividend extends PureComponent {
       },
     ];
 
+    const menu = (
+      <Menu onClick={this.handleMenuClick} selectedKeys={[]}>
+        <Menu.Item key="remove">删除</Menu.Item>
+        <Menu.Item key="approval">批量审批</Menu.Item>
+      </Menu>
+    );
+
     const parentMethods = {
       handleAdd: this.handleAdd,
       handleModalVisible: this.handleModalVisible,
@@ -187,6 +255,16 @@ export default class Dividend extends PureComponent {
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
                 新建
               </Button>
+              {selectedRows.length > 0 && (
+                <span>
+                  <Button>批量操作</Button>
+                  <Dropdown overlay={menu}>
+                    <Button>
+                      更多操作 <Icon type="down" />
+                    </Button>
+                  </Dropdown>
+                </span>
+              )}
             </div>
             <StandardTable
               selectedRows={selectedRows}
