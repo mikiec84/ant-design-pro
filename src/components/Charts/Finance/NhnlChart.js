@@ -138,14 +138,14 @@ class NhnlChart extends Component {
             {
               type: 'line',
               name: 'NH Ratio(%)',
-              yAxis: 1,
+              yAxis: 2,
               data: data.nh_ratio,
               visible: false,
             },
             {
               type: 'line',
               name: 'NL Ratio(%)',
-              yAxis: 1,
+              yAxis: 2,
               data: data.nl_ratio,
               visible: false,
             },

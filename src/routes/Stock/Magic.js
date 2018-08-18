@@ -120,6 +120,14 @@ export default class Magic extends PureComponent {
         dataIndex: 'pe_order',
       },
       {
+        title: 'ROE',
+        dataIndex: 'roe',
+      },
+      {
+        title: 'ROE Order',
+        dataIndex: 'roe_order',
+      },
+      {
         title: 'Magic Order',
         dataIndex: 'magic_order',
         sorter: true,
