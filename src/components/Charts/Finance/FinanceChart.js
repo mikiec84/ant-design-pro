@@ -272,6 +272,12 @@ class FinanceChart extends Component {
               ],
               opposite: true, // right-side y-axis
             },
+            {
+              title: {
+                text: 'Price',
+              },
+              opposite: true, // right-side y-axis
+            },
           ],
           legend: {
             layout: 'vertical',
@@ -343,6 +349,13 @@ class FinanceChart extends Component {
               name: 'Turnover',
               yAxis: 2,
               data: data.turnover,
+              visible: false,
+            },
+            {
+              type: 'line',
+              name: 'Price',
+              yAxis: 3,
+              data: data.close,
               visible: false,
             },
           ],
