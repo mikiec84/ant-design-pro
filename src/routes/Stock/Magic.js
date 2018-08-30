@@ -96,6 +96,10 @@ export default class Magic extends PureComponent {
     const { selectedRows} = this.state;
     const columns = [
       {
+        title: '排名',
+        dataIndex: 'rank',
+      },
+      {
         title: '代码',
         dataIndex: 'code',
       },
@@ -120,7 +124,7 @@ export default class Magic extends PureComponent {
         dataIndex: 'pe_order',
       },
       {
-        title: 'ROE',
+        title: 'ROE(%)',
         dataIndex: 'roe',
       },
       {

@@ -52,7 +52,7 @@ export async function removeRule(params) {
 }
 
 export async function addRule(params) {
-  return request('/api/rule', {
+  return request('/api/portfolio_history', {
     method: 'POST',
     body: {
       ...params,

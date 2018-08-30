@@ -162,13 +162,19 @@ export default class Portfolio extends PureComponent {
     this.props.dispatch({
       type: 'rule/add',
       payload: {
-        description: fields.desc,
+        code: fields.code,
+        amount: fields.amount,
       },
     });
 
     message.success('添加成功');
     this.setState({
       modalVisible: false,
+    });
+    // TODO 刷新还是有点问题
+    this.props.dispatch({
+      type: 'rule/fetch',
+      payload: {},
     });
   };
 
@@ -281,7 +287,7 @@ export default class Portfolio extends PureComponent {
           <div className={styles.tableList}>
             <div className={styles.tableListOperator}>
               <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
-                新建
+                新增个股
               </Button>
             </div>
             <StandardTable
