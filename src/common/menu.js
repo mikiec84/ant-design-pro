@@ -58,6 +58,10 @@ const menuData = [
         path: 'broken',
       },
       {
+        name: 'IPO',
+        path: 'ipo',
+      },
+      {
         name: '涨跌停比率',
         path: 'zdr',
       },

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts';
 
-class BrokenNetChart extends Component {
+class IpoChart extends Component {
   componentDidMount() {
     console.log('componentDidMount***');
     // remember the outer "this"
@@ -18,7 +18,7 @@ class BrokenNetChart extends Component {
             zoomType: 'x',
           },
           title: {
-            text: `Finance chart over time Broken Net Ratio`,
+            text: `Finance chart over time IPO`,
           },
           subtitle: {
             text:
@@ -32,23 +32,17 @@ class BrokenNetChart extends Component {
           yAxis: [
             {
               title: {
-                text: 'Broken Net',
+                text: 'IPO',
               },
             },
             {
               title: {
-                text: 'Broken Net Ratio(%)',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'Penny Stocks',
+                text: 'Broken IPO',
               },
             },
             {
               title: {
-                text: 'Penny Stocks Ratio(%)',
+                text: 'Broken IPO Ratio(%)',
               },
               opposite: true, // right-side y-axis
             },
@@ -100,27 +94,22 @@ class BrokenNetChart extends Component {
           series: [
             {
               type: 'line',
-              name: 'Broken Net',
-              data: data.broken_net,
+              name: 'IPO',
+              data: data.ipo,
               color: 'blue',
             },
             {
               type: 'line',
-              name: 'Broken Net Ratio',
+              name: 'Broken IPO',
+              data: data.broken_ipo,
+              color: 'red',
+            },
+            {
+              type: 'line',
+              name: 'Broken IPO Ratio',
               yAxis: 1,
-              data: data.broken_net_ratio,
+              data: data.broken_ipo_ratio,
               color: 'black',
-            },
-            {
-              type: 'line',
-              name: 'Penny Stocks',
-              data: data.penny_stocks,
-            },
-            {
-              type: 'line',
-              name: 'Penny Stocks Ratio',
-              yAxis: 1,
-              data: data.penny_stocks_ratio,
             },
           ],
         };
@@ -152,4 +141,4 @@ class BrokenNetChart extends Component {
   }
 }
 
-export default BrokenNetChart;
+export default IpoChart;

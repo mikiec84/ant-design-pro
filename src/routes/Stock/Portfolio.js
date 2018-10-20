@@ -193,6 +193,10 @@ export default class Portfolio extends PureComponent {
     const { selectedRows, modalVisible} = this.state;
     const columns = [
       {
+        title: '排序',
+        dataIndex: 'index',
+      },
+      {
         title: '代码',
         dataIndex: 'code',
       },
@@ -279,6 +283,12 @@ export default class Portfolio extends PureComponent {
             </Col>
             <Col sm={8} xs={24}>
               <Info title="杠杆(%)" value={this.props.rule.data.lever} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="CR5(%)" value={this.props.rule.data.cr5} />
+            </Col>
+            <Col sm={8} xs={24}>
+              <Info title="CR10(%)" value={this.props.rule.data.cr10} />
             </Col>
           </Row>
         </Card>

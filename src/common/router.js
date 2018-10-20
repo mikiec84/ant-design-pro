@@ -107,6 +107,9 @@ export const getRouterData = app => {
     '/market/broken': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/BrokenNet')),
     },
+    '/market/ipo': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Ipo')),
+    },
     '/market/zdr': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Zdr')),
     },
