@@ -110,6 +110,9 @@ export const getRouterData = app => {
     '/market/ipo': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Ipo')),
     },
+    '/market/ipo-yearly': {
+      component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/IpoYearly')),
+    },
     '/market/zdr': {
       component: dynamicWrapper(app, ['monitor'], () => import('../routes/Market/Zdr')),
     },

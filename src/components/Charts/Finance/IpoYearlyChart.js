@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Highcharts from 'highcharts';
 
-class ZdrChart extends Component {
+class IpoYearlyChart extends Component {
   componentDidMount() {
     console.log('componentDidMount***');
     // remember the outer "this"
     const that = this;
-    const url = 'http://localhost:8000/api/market';
+    const url = 'http://localhost:8000/api/ipo_yearly';
     fetch(url)
       .then(response => {
         return response.json();
@@ -18,7 +18,7 @@ class ZdrChart extends Component {
             zoomType: 'x',
           },
           title: {
-            text: `Finance chart over time 涨跌停比率`,
+            text: `Finance chart over time IPO`,
           },
           subtitle: {
             text:
@@ -32,29 +32,12 @@ class ZdrChart extends Component {
           yAxis: [
             {
               title: {
-                text: '涨停',
+                text: 'IPO',
               },
             },
             {
               title: {
-                text: '跌停',
-              },
-            },
-            {
-              title: {
-                text: '涨停(%)',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: '跌停(%)',
-              },
-              opposite: true, // right-side y-axis
-            },
-            {
-              title: {
-                text: 'ZDR',
+                text: 'Financing',
               },
               opposite: true, // right-side y-axis
             },
@@ -106,36 +89,16 @@ class ZdrChart extends Component {
           series: [
             {
               type: 'line',
-              name: '涨停',
-              data: data.zt,
-              color: 'red',
-            },
-            {
-              type: 'line',
-              name: '跌停',
-              data: data.dt,
-              color: 'green',
-            },
-            {
-              type: 'line',
-              name: '涨停(%)',
-              yAxis: 1,
-              data: data.zt_ratio,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: '跌停(%)',
-              yAxis: 1,
-              data: data.dt_ratio,
-              visible: false,
-            },
-            {
-              type: 'line',
-              name: 'ZDR',
-              yAxis: 1,
-              data: data.zdr,
+              name: 'IPO',
+              data: data.total,
               color: 'blue',
+            },
+            {
+              type: 'line',
+              name: 'Financing',
+              yAxis: 1,
+              data: data.financing,
+              color: 'black',
             },
           ],
         };
@@ -167,4 +130,4 @@ class ZdrChart extends Component {
   }
 }
 
-export default ZdrChart;
+export default IpoYearlyChart;

@@ -62,6 +62,10 @@ const menuData = [
         path: 'ipo',
       },
       {
+        name: 'IPO Yearly',
+        path: 'ipo-yearly',
+      },
+      {
         name: '涨跌停比率',
         path: 'zdr',
       },
