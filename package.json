@@ -47,7 +47,7 @@
     "react-fittext": "^1.0.0",
     "rollbar": "^2.3.4",
     "url-polyfill": "^1.0.10",
-    "highcharts": "^6.1",
+    "highcharts": "^8.2",
     "react-select": "^1.2.1"
   },
   "devDependencies": {
